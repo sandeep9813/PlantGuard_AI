@@ -1,0 +1,514 @@
+{
+  "Apple - Apple Scab": {
+    "name": "Apple Scab",
+    "symptoms": [
+      "Olive-green to brown spots on leaves",
+      "Velvety or fuzzy appearance on spots",
+      "Distorted or puckered leaves",
+      "Premature leaf drop",
+      "Scabby, corky brown lesions on fruit"
+    ],
+    "causes": "Venturia inaequalis (Fungus)",
+    "treatment": "Apply sulfur or copper-based fungicides. For organic control, use Neem oil or Serenade (Bacillus subtilis). Remove and destroy fallen leaves to prevent overwintering.",
+    "prevention": "Plant resistant varieties. Ensure proper spacing for air circulation. Prune trees to open the canopy.",
+    "immediate_action": "Remove affected leaves and fruit. Avoid overhead watering to keep foliage dry.",
+    "youtube_link": "https://www.youtube.com/results?search_query=apple+scab+treatment"
+  },
+  "Apple - Black Rot": {
+    "name": "Apple - Black Rot",
+    "symptoms": [
+      "Purple spots on leaves (frogeye leaf spot)",
+      "Large, concentric brown circles on fruit",
+      "Fruit eventually turns black and shrivels (mummy)",
+      "Cankers on bark"
+    ],
+    "causes": "Botryosphaeria obtusa (Fungus)",
+    "treatment": "Prune out infected branches and cankers. Apply fungicides containing captan or sulfur.",
+    "prevention": "Remove 'mummified' fruit from trees and ground. Sanitize pruning tools between cuts.",
+    "immediate_action": "Prune out dead wood and remove infected fruit immediately.",
+    "youtube_link": "https://www.youtube.com/results?search_query=apple+black+rot+treatment"
+  },
+  "Apple - Cedar Apple Rust": {
+    "name": "Apple - Cedar Apple Rust",
+    "symptoms": [
+      "Bright orange-yellow spots on upper leaf surface",
+      "Small black dots (pycnidia) within spots",
+      "Orange-brown 'tubes' on leaf underside later in season",
+      "Deformed fruit"
+    ],
+    "causes": "Gymnosporangium juniperi-virginianae (Fungus)",
+    "treatment": "Apply sulfur or copper fungicides in early spring. Organic options include Neem oil.",
+    "prevention": "Remove nearby cedar trees if possible. Plant resistant apple varieties.",
+    "immediate_action": "Spray affected trees with an appropriate fungicide as soon as spots appear.",
+    "youtube_link": "https://www.youtube.com/results?search_query=cedar+apple+rust+treatment"
+  },
+  "Apple - Healthy": {
+    "name": "Apple - Healthy",
+    "symptoms": [
+      "Vibrant green leaves",
+      "No visible spots, lesions, or wilting",
+      "Smooth fruit skin",
+      "Strong, upright growth"
+    ],
+    "causes": "Optimal growth conditions and care.",
+    "treatment": "No treatment needed. Maintain current care routine.",
+    "prevention": "Continue regular watering, fertilization, and monitoring.",
+    "immediate_action": "None required. Enjoy your healthy plant!",
+    "youtube_link": "https://www.youtube.com/results?search_query=apple+tree+care+tips"
+  },
+  "Blueberry - Healthy": {
+    "name": "Blueberry - Healthy",
+    "symptoms": [
+      "Waxy, green leaves",
+      "Consistent growth",
+      "Firm, plump berries (in season)"
+    ],
+    "causes": "Healthy growing environment with acidic soil.",
+    "treatment": "None needed.",
+    "prevention": "Maintain soil pH between 4.5 and 5.2. Mulch to retain moisture.",
+    "immediate_action": "Continue monitoring soil moisture.",
+    "youtube_link": "https://www.youtube.com/results?search_query=blueberry+plant+care"
+  },
+  "Cherry - Healthy": {
+    "name": "Cherry - Healthy",
+    "symptoms": [
+      "Lush green foliage",
+      "Evenly colored, firm fruit",
+      "No visible pests or diseases"
+    ],
+    "causes": "Proper nutrition and pest management.",
+    "treatment": "None needed.",
+    "prevention": "Regular pruning and balanced fertilization.",
+    "immediate_action": "Monitor for common pests like aphids.",
+    "youtube_link": "https://www.youtube.com/results?search_query=cherry+tree+care"
+  },
+  "Cherry - Powdery Mildew": {
+    "name": "Cherry - Powdery Mildew",
+    "symptoms": [
+      "White, powdery patches on leaves",
+      "Leaves may curl upwards",
+      "Distorted new growth",
+      "Fruit may be covered in white fuzz"
+    ],
+    "causes": "Podosphaera clandestina (Fungus)",
+    "treatment": "Apply sulfur or potassium bicarbonate sprays. Organic: Use a mix of milk and water (1:9 ratio).",
+    "prevention": "Improve air circulation through pruning. Avoid excessive nitrogen fertilizer.",
+    "immediate_action": "Increase sunlight exposure if possible and apply an organic fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=cherry+powdery+mildew+treatment"
+  },
+  "Corn (Maize) - Cercospora Leaf Spot": {
+    "name": "Corn - Cercospora Leaf Spot (Gray Leaf Spot)",
+    "symptoms": [
+      "Small, rectangular tan to gray spots",
+      "Spots follow leaf veins",
+      "Spots merge to form large blighted areas",
+      "Leaves eventually turn brown and die"
+    ],
+    "causes": "Cercospora zeae-maydis (Fungus)",
+    "treatment": "Apply foliar fungicides like strobilurins or triazoles if infection is severe.",
+    "prevention": "Crop rotation with non-host crops. Tillage to bury infected residue. Plant resistant hybrids.",
+    "immediate_action": "Scout fields regularly. Consider early harvest if stalks are weakened.",
+    "youtube_link": "https://www.youtube.com/results?search_query=corn+gray+leaf+spot+treatment"
+  },
+  "Corn (Maize) - Common Rust": {
+    "name": "Corn - Common Rust",
+    "symptoms": [
+      "Small, cinnamon-brown pustules on both leaf surfaces",
+      "Pustules turn black as the plant matures",
+      "Yellowing of leaves around pustules"
+    ],
+    "causes": "Puccinia sorghi (Fungus)",
+    "treatment": "Rarely requires treatment in field corn, but fungicides can be used in sweet corn.",
+    "prevention": "Plant resistant hybrids. Early planting can help avoid peak spore periods.",
+    "immediate_action": "Monitor progress. In most cases, the yield impact is minimal.",
+    "youtube_link": "https://www.youtube.com/results?search_query=corn+common+rust+treatment"
+  },
+  "Corn (Maize) - Healthy": {
+    "name": "Corn - Healthy",
+    "symptoms": [
+      "Broad, vibrant green leaves",
+      "Strong stalks",
+      "Uniform ear development"
+    ],
+    "causes": "Adequate nitrogen and moisture.",
+    "treatment": "None needed.",
+    "prevention": "Maintain soil health and consistent watering.",
+    "immediate_action": "Enjoy the growth!",
+    "youtube_link": "https://www.youtube.com/results?search_query=growing+sweet+corn+tips"
+  },
+  "Corn (Maize) - Northern Leaf Blight": {
+    "name": "Corn - Northern Leaf Blight",
+    "symptoms": [
+      "Large, cigar-shaped lesions (1-6 inches long)",
+      "Lesions are tan or gray and have pointed ends",
+      "Premature leaf death"
+    ],
+    "causes": "Exserohilum turcicum (Fungus)",
+    "treatment": "Foliar fungicides if economic threshold is reached.",
+    "prevention": "Resistant hybrids, crop rotation, and residue management.",
+    "immediate_action": "Identify the severity to decide on fungicide application.",
+    "youtube_link": "https://www.youtube.com/results?search_query=corn+northern+leaf+blight+treatment"
+  },
+  "Grape - Black Rot": {
+    "name": "Grape - Black Rot",
+    "symptoms": [
+      "Small brown spots on leaves with black borders",
+      "Berries turn brown and سپس shrivel into black 'mummies'",
+      "Small black dots (pycnidia) on spots and mummies"
+    ],
+    "causes": "Guignardia bidwellii (Fungus)",
+    "treatment": "Apply Mancozeb or Myclobutanil fungicides. Organic: Copper or sulfur sprays.",
+    "prevention": "Remove all mummified berries from vines and ground. Prune to improve airflow.",
+    "immediate_action": "Remove infected clusters immediately to prevent spread.",
+    "youtube_link": "https://www.youtube.com/results?search_query=grape+black+rot+treatment"
+  },
+  "Grape - Esca (Black Measles)": {
+    "name": "Grape - Esca",
+    "symptoms": [
+      "Interveinal yellowing (tiger-striping) on leaves",
+      "Small dark spots on berries (measles)",
+      "Sudden wilting of the entire vine (apoplexy)",
+      "Internal wood discoloration"
+    ],
+    "causes": "Complex of several fungi (e.g., Phaeomoniella chlamydospora)",
+    "treatment": "No cure for the vine. Pruning out infected wood can help manage it.",
+    "prevention": "Protect pruning wounds with sealants. Avoid water stress.",
+    "immediate_action": "Mark infected vines for selective pruning or removal.",
+    "youtube_link": "https://www.youtube.com/results?search_query=grape+esca+treatment"
+  },
+  "Grape - Leaf Blight": {
+    "name": "Grape - Leaf Blight",
+    "symptoms": [
+      "Irregular brown spots on leaves",
+      "Leaf margins may turn brown and dry",
+      "Early leaf drop",
+      "Weakening of the vine"
+    ],
+    "causes": "Pseudocercospora vitis (Fungus)",
+    "treatment": "Fungicide applications similar to Black Rot (Bordeaux mixture).",
+    "prevention": "Remove leaf litter. Improve airflow in the vineyard.",
+    "immediate_action": "Clean up fallen leaves to reduce spore load.",
+    "youtube_link": "https://www.youtube.com/results?search_query=grape+leaf+blight+treatment"
+  },
+  "Grape - Healthy": {
+    "name": "Grape - Healthy",
+    "symptoms": [
+      "Clear, green leaves",
+      "Full, healthy-looking clusters",
+      "Strong vine growth"
+    ],
+    "causes": "Well-drained soil and proper pruning.",
+    "treatment": "None needed.",
+    "prevention": "Maintain regular pruning and monitoring.",
+    "immediate_action": "Continue current management practices.",
+    "youtube_link": "https://www.youtube.com/results?search_query=grapevine+care+for+beginners"
+  },
+  "Orange - Haunglongbing (Citrus Greening)": {
+    "name": "Citrus Greening (Haunglongbing)",
+    "symptoms": [
+      "Yellowing of leaves, often in a blotchy pattern",
+      "Small, upright leaves",
+      "Small, bitter, misshapen fruit that remains partially green",
+      "Stunted growth and twig dieback"
+    ],
+    "causes": "Candidatus Liberibacter asiaticus (Bacteria, spread by Asian Citrus Psyllid)",
+    "treatment": "No known cure. Manage the psyllid population. Removal of infected trees is necessary.",
+    "prevention": "Use disease-free nursery stock. Monitor for psyllids using sticky traps. Use insecticidal soaps or oils for psyllid control.",
+    "immediate_action": "Remove and destroy infected trees to prevent the spread of bacteria.",
+    "youtube_link": "https://www.youtube.com/results?search_query=citrus+greening+treatment"
+  },
+  "Peach - Bacterial Spot": {
+    "name": "Peach - Bacterial Spot",
+    "symptoms": [
+      "Small, angular, water-soaked spots on leaf undersides",
+      "Spots turn purple or brown and drop out (shot-hole appearance)",
+      "Cracking and pitting on fruit surface"
+    ],
+    "causes": "Xanthomonas arboricola pv. pruni (Bacteria)",
+    "treatment": "Apply copper-based sprays during dormancy. Oxytetracycline during the season.",
+    "prevention": "Plant resistant cultivars. Avoid excessive nitrogen.",
+    "immediate_action": "Apply a recommended bactericide and avoid overhead irrigation.",
+    "youtube_link": "https://www.youtube.com/results?search_query=peach+bacterial+spot+treatment"
+  },
+  "Peach - Healthy": {
+    "name": "Peach - Healthy",
+    "symptoms": [
+      "Lush, dark green leaves",
+      "Smooth, fuzz-covered fruit",
+      "No visible lesions or cankers"
+    ],
+    "causes": "Proper orchard management.",
+    "treatment": "None needed.",
+    "prevention": "Regular pruning and preventative dormant sprays.",
+    "immediate_action": "Monitor for pests like peach tree borers.",
+    "youtube_link": "https://www.youtube.com/results?search_query=peach+tree+maintenance"
+  },
+  "Bell Pepper - Bacterial Spot": {
+    "name": "Bell Pepper - Bacterial Spot",
+    "symptoms": [
+      "Small, water-soaked spots on leaves",
+      "Spots turn brown with yellow halos",
+      "Leaf drop in severe cases",
+      "Raised, scab-like spots on fruit"
+    ],
+    "causes": "Xanthomonas campestris pv. vesicatoria (Bacteria)",
+    "treatment": "Apply copper-based bactericides. Use Streptomycin in some regions (check local regulations).",
+    "prevention": "Use pathogen-free seeds. Rotate crops every 3 years. Avoid overhead irrigation.",
+    "immediate_action": "Remove and destroy infected plants. Do not handle plants when wet.",
+    "youtube_link": "https://www.youtube.com/results?search_query=pepper+bacterial+spot+treatment"
+  },
+  "Bell Pepper - Healthy": {
+    "name": "Bell Pepper - Healthy",
+    "symptoms": [
+      "Deep green, glossy leaves",
+      "No signs of spots or yellowing",
+      "Firm, uniform fruit development"
+    ],
+    "causes": "Healthy growing environment.",
+    "treatment": "None needed.",
+    "prevention": "Provide consistent moisture and adequate calcium to prevent blossom end rot.",
+    "immediate_action": "Maintain good cultural practices.",
+    "youtube_link": "https://www.youtube.com/results?search_query=growing+healthy+bell+peppers"
+  },
+  "Potato - Early Blight": {
+    "name": "Potato - Early Blight",
+    "symptoms": [
+      "Small brown spots with concentric 'target' rings",
+      "Usually starts on older, lower leaves",
+      "Yellowing around the spots",
+      "Dark, sunken lesions on tubers"
+    ],
+    "causes": "Alternaria solani (Fungus)",
+    "treatment": "Apply fungicides like Chlorothalonil or Mancozeb. Organic: Copper fungicides or Neem oil.",
+    "prevention": "Rotate crops. Remove debris. Maintain plant vigor with proper nutrition.",
+    "immediate_action": "Increase spacing between plants and apply an organic fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=potato+early+blight+treatment"
+  },
+  "Potato - Late Blight": {
+    "name": "Potato - Late Blight",
+    "symptoms": [
+      "Large, water-soaked dark green to black spots",
+      "White moldy growth on leaf undersides in humid conditions",
+      "Rapid wilting and rot of the entire plant",
+      "Reddish-brown dry rot in tubers"
+    ],
+    "causes": "Phytophthora infestans (Oomycete)",
+    "treatment": "Apply systemic fungicides. Destroy infected plants immediately to prevent spread.",
+    "prevention": "Use certified disease-free seed potatoes. Avoid overhead watering.",
+    "immediate_action": "Remove and destroy all infected foliage and tubers immediately. DO NOT COMPOST.",
+    "youtube_link": "https://www.youtube.com/results?search_query=potato+late+blight+treatment"
+  },
+  "Potato - Healthy": {
+    "name": "Potato - Healthy",
+    "symptoms": [
+      "Bushy, green foliage",
+      "Strong stems",
+      "No visible leaf spots or yellowing"
+    ],
+    "causes": "Good soil health and moisture.",
+    "treatment": "None needed.",
+    "prevention": "Hilling potatoes and consistent watering.",
+    "immediate_action": "Check for potato beetles.",
+    "youtube_link": "https://www.youtube.com/results?search_query=growing+potatoes+at+home"
+  },
+  "Raspberry - Healthy": {
+    "name": "Raspberry - Healthy",
+    "symptoms": [
+      "Lush green canes",
+      "Vibrant green leaves with serrated edges",
+      "Bright red or black berries (in season)"
+    ],
+    "causes": "Well-drained soil and adequate sun.",
+    "treatment": "None needed.",
+    "prevention": "Prune out old canes after harvest. Ensure good air circulation.",
+    "immediate_action": "Monitor for raspberry beetles.",
+    "youtube_link": "https://www.youtube.com/results?search_query=raspberry+plant+care"
+  },
+  "Soybean - Healthy": {
+    "name": "Soybean - Healthy",
+    "symptoms": [
+      "Broad, green trifoliate leaves",
+      "Strong stems and pods",
+      "Consistent growth across the field"
+    ],
+    "causes": "Optimal nitrogen fixation and soil health.",
+    "treatment": "None needed.",
+    "prevention": "Rotate with corn. Control weeds to reduce competition.",
+    "immediate_action": "Enjoy the healthy crop!",
+    "youtube_link": "https://www.youtube.com/results?search_query=growing+healthy+soybeans"
+  },
+  "Squash - Powdery Mildew": {
+    "name": "Squash - Powdery Mildew",
+    "symptoms": [
+      "White, flour-like patches on leaves and stems",
+      "Leaves turn yellow and brown",
+      "Premature leaf death",
+      "Reduced fruit quality and size"
+    ],
+    "causes": "Podosphaera xanthii (Fungus)",
+    "treatment": "Apply sulfur or potassium bicarbonate. Organic: Neem oil or a mix of baking soda and water.",
+    "prevention": "Plant resistant varieties. Ensure full sun and good air circulation.",
+    "immediate_action": "Prune heavily infected leaves and apply an organic fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=squash+powdery+mildew+treatment"
+  },
+  "Strawberry - Leaf Scorch": {
+    "name": "Strawberry - Leaf Scorch",
+    "symptoms": [
+      "Small, dark-purple spots on upper leaf surface",
+      "Spots enlarge and merge, making the leaf look scorched or burned",
+      "Leaves may curl and turn brown"
+    ],
+    "causes": "Diplocarpon earliana (Fungus)",
+    "treatment": "Fungicide sprays (Captan or sulfur). Organic: Neem oil.",
+    "prevention": "Plant resistant varieties. Remove old leaves after harvest. Improve drainage.",
+    "immediate_action": "Prune away heavily infected leaves and improve air circulation.",
+    "youtube_link": "https://www.youtube.com/results?search_query=strawberry+leaf+scorch+treatment"
+  },
+  "Strawberry - Healthy": {
+    "name": "Strawberry - Healthy",
+    "symptoms": [
+      "Deep green, three-part leaves",
+      "White flowers and bright red fruit",
+      "No visible spots or mold"
+    ],
+    "causes": "Full sun and well-drained soil.",
+    "treatment": "None needed.",
+    "prevention": "Mulching with straw to keep berries off the soil.",
+    "immediate_action": "Harvest berries regularly.",
+    "youtube_link": "https://www.youtube.com/results?search_query=strawberry+plant+care"
+  },
+  "Tomato - Bacterial Spot": {
+    "name": "Tomato - Bacterial Spot",
+    "symptoms": [
+      "Small, circular, greasy-looking spots on leaves",
+      "Spots turn brown and papery",
+      "Small, raised black spots on fruit"
+    ],
+    "causes": "Xanthomonas species (Bacteria)",
+    "treatment": "Copper-based fungicides. Organic: Actigard or Serenade.",
+    "prevention": "Avoid overhead watering. Rotate crops. Use clean seeds.",
+    "immediate_action": "Remove infected leaves and apply copper spray.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+bacterial+spot+treatment"
+  },
+  "Tomato - Early Blight": {
+    "name": "Tomato - Early Blight",
+    "symptoms": [
+      "Concentric 'target' rings on older leaves",
+      "Yellowing around spots",
+      "Stem lesions",
+      "Sunken rot at the stem end of fruit"
+    ],
+    "causes": "Alternaria solani (Fungus)",
+    "treatment": "Copper or sulfur fungicides. Prune lower leaves to improve airflow.",
+    "prevention": "Mulch around plants. Rotate crops. Avoid wetting foliage.",
+    "immediate_action": "Prune infected bottom leaves and apply a preventative fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+early+blight+treatment"
+  },
+  "Tomato - Late Blight": {
+    "name": "Tomato - Late Blight",
+    "symptoms": [
+      "Large, olive-green to black water-soaked patches",
+      "White fungal growth on undersides in moist weather",
+      "Fruit develops large, firm, brown greasy spots"
+    ],
+    "causes": "Phytophthora infestans (Oomycete)",
+    "treatment": "Apply fungicides immediately (Chlorothalonil or Copper). Often fatal to the plant.",
+    "prevention": "Plant resistant varieties (e.g., 'Defiant'). Keep foliage dry.",
+    "immediate_action": "Remove and destroy infected plants immediately to prevent neighborhood-wide spread.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+late+blight+treatment"
+  },
+  "Tomato - Leaf Mold": {
+    "name": "Tomato - Leaf Mold",
+    "symptoms": [
+      "Pale green or yellow spots on upper leaf surfaces",
+      "Olive-green to brown velvety growth on leaf undersides",
+      "Leaves eventually wither and die"
+    ],
+    "causes": "Passalora fulva (Fungus)",
+    "treatment": "Apply fungicides containing chlorothalonil or copper. Improve greenhouse ventilation.",
+    "prevention": "Avoid high humidity. Plant resistant varieties. Prune for better airflow.",
+    "immediate_action": "Increase ventilation and apply a preventative fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+leaf+mold+treatment"
+  },
+  "Tomato - Septoria Leaf Spot": {
+    "name": "Tomato - Septoria Leaf Spot",
+    "symptoms": [
+      "Numerous small, circular spots with gray centers and dark borders",
+      "Tiny black specks (fruiting bodies) in the centers",
+      "Usually starts on lower leaves and moves up"
+    ],
+    "causes": "Septoria lycopersici (Fungus)",
+    "treatment": "Copper fungicides. Remove infected leaves.",
+    "prevention": "Crop rotation and clearing debris. Mulching is critical.",
+    "immediate_action": "Remove infected leaves and apply an organic fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+septoria+leaf+spot+treatment"
+  },
+  "Tomato - Spider Mites (Two-Spotted Spider Mite)": {
+    "name": "Tomato - Spider Mites",
+    "symptoms": [
+      "Fine stippling (tiny white or yellow dots) on leaves",
+      "Leaves turn yellow and bronzed",
+      "Fine webbing on leaf undersides or between leaves",
+      "Leaf drop in severe infestations"
+    ],
+    "causes": "Tetranychus urticae (Arachnid)",
+    "treatment": "Apply insecticidal soap or Neem oil. Release predatory mites (organic control).",
+    "prevention": "Keep plants well-watered (mites thrive in dry conditions). Monitor regularly with a magnifying glass.",
+    "immediate_action": "Spray plants with a strong stream of water to dislodge mites, then apply Neem oil.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+spider+mites+treatment"
+  },
+  "Tomato - Target Spot": {
+    "name": "Tomato - Target Spot",
+    "symptoms": [
+      "Small, brown, circular spots with concentric rings (like a target)",
+      "Spots may have a yellow halo",
+      "Pits or lesions on fruit surface"
+    ],
+    "causes": "Corynespora cassiicola (Fungus)",
+    "treatment": "Apply fungicides like azoxystrobin or boscalid. Copper fungicides can also help.",
+    "prevention": "Ensure good drainage and airflow. Remove plant debris after harvest.",
+    "immediate_action": "Prune affected leaves and apply a preventative fungicide.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+target+spot+treatment"
+  },
+  "Tomato - Yellow Leaf Curl Virus": {
+    "name": "Tomato - Yellow Leaf Curl Virus",
+    "symptoms": [
+      "Severe stunting of the plant",
+      "Upward curling of leaves",
+      "Yellowing (chlorosis) of leaf margins",
+      "Reduced fruit set"
+    ],
+    "causes": "Begomovirus (Transmitted by Silverleaf Whiteflies)",
+    "treatment": "No cure for the virus. Control the whitefly population.",
+    "prevention": "Use reflective mulches. Plant resistant varieties. Use insect nets.",
+    "immediate_action": "Remove and destroy infected plants to prevent the virus from spreading via whiteflies.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+yellow+leaf+curl+virus+control"
+  },
+  "Tomato - Tomato Mosaic Virus": {
+    "name": "Tomato Mosaic Virus",
+    "symptoms": [
+      "Mottling or mosaic patterns of light and dark green on leaves",
+      "Fern-like or distorted leaf growth",
+      "Internal browning of fruit",
+      "Stunted plant growth"
+    ],
+    "causes": "Tobamovirus (Highly contagious via contact)",
+    "treatment": "No cure. Remove and destroy infected plants immediately.",
+    "prevention": "Wash hands and sanitize tools after handling plants. Use virus-free seeds. Avoid smoking near plants (tobacco can carry the virus).",
+    "immediate_action": "Remove infected plants and DO NOT touch healthy plants until tools/hands are sanitized.",
+    "youtube_link": "https://www.youtube.com/results?search_query=tomato+mosaic+virus+treatment"
+  },
+  "Tomato - Healthy": {
+    "name": "Tomato - Healthy",
+    "symptoms": [
+      "Vibrant green leaves and stems",
+      "Firm, evenly colored fruit",
+      "No signs of wilting or spots"
+    ],
+    "causes": "Adequate sun, water, and nutrients.",
+    "treatment": "None needed.",
+    "prevention": "Stake plants for support and airflow.",
+    "immediate_action": "Continue regular feeding and watering.",
+    "youtube_link": "https://www.youtube.com/results?search_query=growing+perfect+tomatoes"
+  }
+}

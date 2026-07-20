@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.pyre/
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+env/
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/build/
+*.tsbuildinfo
+
+# Database
+*.db
+
+# Trained model (large file)
+backend/trained_model/efficientnet_b4.keras
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated heatmaps (user uploads)
+backend/storage/heatmaps/
+
+# User-uploaded images
+backend/storage/uploads/
+
+# Dev/test artifacts
+backend/test_image.jpg
+backend/training_hist.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

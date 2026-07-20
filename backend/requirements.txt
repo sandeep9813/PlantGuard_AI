@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+slowapi
+tensorflow>=2.14.0
+numpy
+pillow
+httpx
+python-dotenv
+scipy
+sqlalchemy
+bcrypt
+pyjwt

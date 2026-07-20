@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Early Blight in Tomatoes",
+    "category": "Crop Care",
+    "content": "Dark spots with concentric rings on lower leaves signal early blight. Remove affected foliage immediately and apply copper-based fungicide. Water at the base to keep leaves dry and reduce spread.",
+    "icon": "Bug"
+  },
+  {
+    "id": 2,
+    "title": "Prevent Rice Blast",
+    "category": "Pest Alert",
+    "content": "Rice blast causes diamond-shaped lesions on leaves and neck rot on panicles. Use resistant varieties, avoid excessive nitrogen, and apply tricyclazole or isoprothiolane at first sign of infection.",
+    "icon": "AlertTriangle"
+  },
+  {
+    "id": 3,
+    "title": "Manage Powdery Mildew",
+    "category": "Crop Care",
+    "content": "White powdery growth on leaves reduces photosynthesis. Improve air circulation through proper spacing, apply sulfur or neem oil weekly, and remove heavily infected plant parts.",
+    "icon": "Wind"
+  },
+  {
+    "id": 4,
+    "title": "Scout Fields Regularly",
+    "category": "Seasonal Advice",
+    "content": "Walk your fields at least once a week during the growing season. Check the underside of leaves for eggs and early-stage pests. Early detection can reduce pesticide use by up to 40%.",
+    "icon": "Search"
+  },
+  {
+    "id": 5,
+    "title": "Corn Leaf Blight Warning",
+    "category": "Pest Alert",
+    "content": "Northern Corn Leaf Blight shows as long, cigar-shaped gray-green lesions on lower leaves. Rotate crops, use resistant hybrids, and apply fungicide at tasseling if humidity is high.",
+    "icon": "Leaf"
+  },
+  {
+    "id": 6,
+    "title": "Potato Late Blight Action",
+    "category": "Treatment Tip",
+    "content": "Late blight thrives in cool, wet weather. Water-soaked lesions on leaves with white fungal growth at the margins. Apply chlorothalonil or mancozeb preventatively. Destroy infected plants immediately.",
+    "icon": "Droplets"
+  },
+  {
+    "id": 7,
+    "title": "Downy Mildew on Grapes",
+    "category": "Crop Care",
+    "content": "Yellow oil spots on upper leaf surface with white downy growth underneath. Prune for better airflow, apply copper-based sprays before rain events, and remove mummified berries after harvest.",
+    "icon": "Sun"
+  },
+  {
+    "id": 8,
+    "title": "Clean Equipment Between Fields",
+    "category": "Seasonal Advice",
+    "content": "Plant pathogens spread easily through contaminated tools and machinery. Disinfect pruning shears, tillers, and sprayers between fields with a 10% bleach solution to prevent cross-contamination.",
+    "icon": "Shield"
+  }
+]
