@@ -11,8 +11,11 @@ class DashboardService:
         self.db = db
         self.species_count = species_count
 
-    def _get_items(self):
-        return self.db.query(Prediction).order_by(Prediction.created_at.desc()).all()
+    def _get_items(self, user_id: int | None = None):
+        query = self.db.query(Prediction).order_by(Prediction.created_at.desc())
+        if user_id is not None:
+            query = query.filter(Prediction.user_id == user_id)
+        return query.all()
 
     def _current_month_count(self, items):
         now = datetime.now()
@@ -40,8 +43,8 @@ class DashboardService:
                 pass
         return count
 
-    def get_stats(self):
-        items = self._get_items()
+    def get_stats(self, user_id: int | None = None):
+        items = self._get_items(user_id)
         total = len(items)
         monthly = self._current_month_count(items)
         previous = self._previous_month_count(items)
@@ -78,8 +81,8 @@ class DashboardService:
             "species_count": self.species_count,
         }
 
-    def get_recent(self, limit: int = 5):
-        items = self._get_items()
+    def get_recent(self, limit: int = 5, user_id: int | None = None):
+        items = self._get_items(user_id)
         result = []
         for item in items[:limit]:
             top_3 = json.loads(item.top_3) if item.top_3 else []

@@ -37,7 +37,7 @@ def list_sessions(
             "crop": s.crop,
             "disease": s.disease,
             "message_count": len(s.messages),
-            "created_at": s.created_at.isoformat(),
+            "created_at": s.created_at.isoformat() + "Z",
         }
         for s in sessions
     ]
@@ -58,9 +58,9 @@ def get_session(
         "id": session.id,
         "crop": session.crop,
         "disease": session.disease,
-        "created_at": session.created_at.isoformat(),
+        "created_at": session.created_at.isoformat() + "Z",
         "messages": [
-            {"role": m.role, "content": m.content, "created_at": m.created_at.isoformat()}
+            {"role": m.role, "content": m.content, "created_at": m.created_at.isoformat() + "Z"}
             for m in session.messages
         ],
     }

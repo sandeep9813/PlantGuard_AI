@@ -8,6 +8,7 @@ import { useToast } from '../components/Toast'
 interface ChatMessage {
   role: 'user' | 'assistant'
   content: string
+  timestamp: Date
 }
 
 interface ChatContext {
@@ -46,7 +47,7 @@ const ChatPage = () => {
 
   const startNewChat = () => {
     autoQueryDone.current = false
-    setMessages([{ role: 'assistant', content: WELCOME }])
+    setMessages([{ role: 'assistant', content: WELCOME, timestamp: new Date() }])
     setSessionId(null)
     setContext(null)
     setShowHistory(false)
@@ -62,7 +63,7 @@ const ChatPage = () => {
     if (autoQueryDone.current) return
     autoQueryDone.current = true
 
-    setMessages([{ role: 'assistant', content: WELCOME }])
+    setMessages([{ role: 'assistant', content: WELCOME, timestamp: new Date() }])
 
     const query = state.query as string
     const newContext: ChatContext | null =
@@ -74,17 +75,17 @@ const ChatPage = () => {
     window.history.replaceState({}, document.title)
 
     const performAutoQuery = async () => {
-      setMessages(prev => [...prev, { role: 'user', content: query }])
+      setMessages(prev => [...prev, { role: 'user', content: query, timestamp: new Date() }])
       setLoading(true)
       try {
         const response = await api.chatWithContext({
           crop: newContext?.crop || '', disease: newContext?.disease || '',
           confidence: newContext?.confidence || 0, question: query, chat_history: []
         })
-        setMessages(prev => [...prev, { role: 'assistant', content: response.answer }])
+        setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date() }])
         if (response.session_id) setSessionId(response.session_id)
       } catch {
-        setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running." }])
+        setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running.", timestamp: new Date() }])
         toast('error', 'Chat unavailable — backend may be offline')
       } finally {
         setLoading(false)
@@ -99,7 +100,7 @@ const ChatPage = () => {
     if (!input.trim() || loading) return
     const userMessage = input.trim()
     setInput('')
-    const updatedMessages = [...messages, { role: 'user' as const, content: userMessage }]
+    const updatedMessages = [...messages, { role: 'user' as const, content: userMessage, timestamp: new Date() }]
     setMessages(updatedMessages)
     setLoading(true)
     try {
@@ -108,10 +109,11 @@ const ChatPage = () => {
         crop: context?.crop || '', disease: context?.disease || '',
         confidence: context?.confidence || 0, question: userMessage, chat_history: history.slice(0, -1)
       }, sessionId ?? undefined)
-      setMessages(prev => [...prev, { role: 'assistant', content: response.answer }])
+      setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date() }])
+      if (response.session_id) setSessionId(response.session_id)
       loadSessions()
     } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running." }])
+      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running.", timestamp: new Date() }])
       toast('error', 'Chat response failed')
     } finally { setLoading(false) }
   }
@@ -119,7 +121,10 @@ const ChatPage = () => {
   const restoreSession = async (id: number) => {
     try {
       const data = await api.getChatSession(id)
-      setMessages(data.messages.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })))
+      setMessages(data.messages.map(m => {
+        const d = new Date(m.created_at)
+        return { role: m.role as 'user' | 'assistant', content: m.content, timestamp: isNaN(d.getTime()) ? new Date() : d }
+      }))
       setSessionId(id)
       if (data.crop) setContext({ crop: data.crop, disease: data.disease || '', confidence: 0 })
       setShowHistory(false)
@@ -258,7 +263,7 @@ const ChatPage = () => {
                   </div>
                 </div>
                 <span className="text-xs font-medium text-slate-400 mt-1 ml-1">
-                  {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </span>
               </div>
             </motion.div>

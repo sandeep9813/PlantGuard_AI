@@ -36,17 +36,24 @@ const HistoryPage = () => {
   }, [])
 
   const clearHistory = async () => {
-    if (window.confirm('Are you sure you want to clear all history?')) {
+    if (!window.confirm('Are you sure you want to clear all history?')) return
+    try {
       await api.clearHistory()
       toast('success', 'History cleared')
       fetchHistory(1)
+    } catch {
+      toast('error', 'Failed to clear history')
     }
   }
 
   const deleteItem = async (id: number) => {
-    await api.deleteHistoryItem(id)
-    toast('success', 'Scan removed')
-    fetchHistory(page)
+    try {
+      await api.deleteHistoryItem(id)
+      toast('success', 'Scan removed')
+      fetchHistory(page)
+    } catch {
+      toast('error', 'Failed to delete scan')
+    }
   }
 
   const imageUrl = (item: HistoryItem) => {
