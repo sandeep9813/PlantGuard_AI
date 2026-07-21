@@ -20,6 +20,7 @@ const DetectionPage = () => {
   const [error, setError] = useState<string | null>(null)
   const [cameraMode, setCameraMode] = useState(false)
   const galleryInputRef = useRef<HTMLInputElement>(null)
+    const prevPreviewUrl = useRef<string | null>(null)
 
   const heatmapUrl = (path: string | null | undefined) => {
     if (!path || path.startsWith('data:')) return path || ''
@@ -27,6 +28,8 @@ const DetectionPage = () => {
   }
 
   const handleCapture = useCallback((file: File, preview: string) => {
+    if (prevPreviewUrl.current) URL.revokeObjectURL(prevPreviewUrl.current)
+    prevPreviewUrl.current = null
     setFile(file)
     setPreview(preview)
     setResult(null)
@@ -38,10 +41,17 @@ const DetectionPage = () => {
     galleryInputRef.current?.click()
   }
 
+  const setPreviewWithUrl = (file: File) => {
+    if (prevPreviewUrl.current) URL.revokeObjectURL(prevPreviewUrl.current)
+    const url = URL.createObjectURL(file)
+    prevPreviewUrl.current = url
+    setPreview(url)
+  }
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const selectedFile = acceptedFiles[0]
     setFile(selectedFile)
-    setPreview(URL.createObjectURL(selectedFile))
+    setPreviewWithUrl(selectedFile)
     setResult(null)
     setError(null)
   }, [])
@@ -65,7 +75,11 @@ const DetectionPage = () => {
     } finally { setLoading(false) }
   }
 
-  const reset = () => { setFile(null); setPreview(null); setResult(null); setError(null) }
+  const reset = () => {
+    if (prevPreviewUrl.current) URL.revokeObjectURL(prevPreviewUrl.current)
+    prevPreviewUrl.current = null
+    setFile(null); setPreview(null); setResult(null); setError(null)
+  }
 
   const reportRef = useRef<HTMLDivElement>(null)
 
@@ -123,7 +137,7 @@ const DetectionPage = () => {
               <input ref={galleryInputRef} type="file" accept="image/*" className="hidden"
                 onChange={(e) => {
                   const f = e.target.files?.[0]
-                  if (f) { setFile(f); setPreview(URL.createObjectURL(f)); setResult(null); setError(null) }
+                  if (f) { setFile(f); setPreviewWithUrl(f); setResult(null); setError(null) }
                 }} />
             </div>
             <div {...getRootProps()} className={`border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-all ${isDragActive ? 'border-green-500 bg-green-50' : 'border-slate-300 hover:border-green-500 hover:bg-green-50'}`}>

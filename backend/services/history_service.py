@@ -1,5 +1,5 @@
 import json
-
+from controllers.history_controller import AddHistoryRequest
 from sqlalchemy.orm import Session
 
 from database.models import Prediction
@@ -23,7 +23,7 @@ class HistoryService:
             "total_pages": max(1, (total + per_page - 1) // per_page),
         }
 
-    def add_history(self, item: dict, user_id: int | None = None):
+    def add_history(self, item: AddHistoryRequest, user_id: int | None = None):
         record = Prediction(
             user_id=user_id,
             image_path=item.get("image_path"),

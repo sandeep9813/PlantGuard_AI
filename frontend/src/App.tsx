@@ -10,7 +10,15 @@ import TreatmentGuidesPage from './pages/TreatmentGuidesPage'
 import { useAuth } from './context/AuthContext'
 
 function App() {
-  const { user } = useAuth()
+  const { user,loading } = useAuth()
+
+  if(loading){
+    return (
+      <div className="min-h-screen flext items-center justify-center bg-slate-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-700"/>
+      </div>
+    )
+  }
 
   if (!user) {
     return (

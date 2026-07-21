@@ -17,4 +17,5 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
-    sources: list[str] = ["knowledge_base"]
+    sources: list[str]
+    session_id: int | None = None

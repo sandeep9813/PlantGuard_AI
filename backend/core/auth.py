@@ -12,8 +12,9 @@ from database.engine import SessionLocal
 from database.models import User
 
 load_dotenv()
-
-SECRET_KEY = os.getenv("JWT_SECRET", "plantguard-default-secret-change-in-production")
+SECRET_KEY =    os.getenv("JWT_SECRET")
+if not SECRET_KEY:
+    raise RuntimeError("JWT_SECRET environment variable is not set ")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_DAYS = 7
 

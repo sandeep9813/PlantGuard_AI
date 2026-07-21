@@ -45,6 +45,7 @@ const ChatPage = () => {
   }
 
   const startNewChat = () => {
+    autoQueryDone.current = false
     setMessages([{ role: 'assistant', content: WELCOME }])
     setSessionId(null)
     setContext(null)
@@ -81,6 +82,7 @@ const ChatPage = () => {
           confidence: newContext?.confidence || 0, question: query, chat_history: []
         })
         setMessages(prev => [...prev, { role: 'assistant', content: response.answer }])
+        if (response.session_id) setSessionId(response.session_id)
       } catch {
         setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running." }])
         toast('error', 'Chat unavailable — backend may be offline')

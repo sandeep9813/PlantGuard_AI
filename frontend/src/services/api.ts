@@ -101,6 +101,12 @@ export interface HistoryItem {
   top_3?: Array<{ class_name: string; confidence: number }>
 }
 
+export interface ChatContextResponse {
+  answer: string 
+  sources: string[]
+  session_id?: number
+}
+
 class PlantGuardApiClient {
   private baseUrl: string
 

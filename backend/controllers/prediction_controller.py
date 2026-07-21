@@ -1,7 +1,10 @@
 import base64
-import time
+from controllers.history_controller import AddHistoryRequest
+
 from datetime import datetime
 from pathlib import Path
+import uuid
+from datetime import datetime
 
 from fastapi import APIRouter, Depends, File, UploadFile
 from sqlalchemy.orm import Session
@@ -25,7 +28,7 @@ async def predict(
     current_user: User | None = Depends(get_current_user),
 ):
     result = await prediction_service.predict(file)
-    item_id = int(time.time() * 1000)
+    item_id = uuid.uuid4().hex
 
     heatmap_data = result.get("heatmap")
     if heatmap_data and heatmap_data.startswith("data:image/png;base64,"):
@@ -45,16 +48,18 @@ async def predict(
         pass
 
     history_service = HistoryService(db)
-    history_service.add_history({
-        "id": item_id,
-        "date": datetime.now().strftime("%m/%d/%Y, %I:%M:%S %p"),
-        "prediction": result["prediction"],
-        "confidence": result["confidence"],
-        "is_uncertain": result["is_uncertain"],
-        "confidence_message": result["confidence_message"],
-        "heatmap": result.get("heatmap"),
-        "top_3": result.get("top_3", []),
-        "image_path": image_path,
-    }, user_id=current_user.id if current_user else None)
+    history_service.add_history(
+    AddHistoryRequest(
+        prediction=result["prediction"],
+        confidence=result["confidence"],
+        is_uncertain=result["is_uncertain"],
+        confidence_message=result["confidence_message"],
+        heatmap=result.get("heatmap"),
+        top_3=result.get("top_3", []),
+        image_path=image_path,
+        date=datetime.now().strftime("%m/%d/%Y, %I:%M:%S %p"),
+    ),
+    user_id=current_user.id if current_user else None,
+)
 
     return result

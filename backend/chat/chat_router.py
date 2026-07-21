@@ -42,5 +42,6 @@ async def chat(
     db.add(ChatMessage(session_id=session.id, role="user", content=request.question))
     db.add(ChatMessage(session_id=session.id, role="assistant", content=result.answer))
     db.commit()
-
+    
+    result.session_id = session_id
     return result

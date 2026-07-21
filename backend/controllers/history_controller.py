@@ -5,8 +5,18 @@ from core.auth import get_current_user
 from core.database import get_db
 from database.models import User
 from services.history_service import HistoryService
+from pydantic import BaseModel
+class AddHistoryRequest(BaseModel):
+    prediction: str
+    confidence: float
+    is_uncertain: bool = False
+    confidence_message: str| None = None
+    top_3: list[dict] = []
+    date: str | None = None
+    image_path: str | None = None
 
 router = APIRouter(prefix="/history")
+
 
 
 @router.get("")
@@ -23,7 +33,7 @@ def get_history(
 
 @router.post("")
 def add_history(
-    item: dict,
+    item: AddHistoryRequest,
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user),
 ):
