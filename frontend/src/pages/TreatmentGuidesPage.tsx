@@ -88,7 +88,7 @@ const TreatmentGuidesPage = () => {
         </div>
         {selectedGuide && (
           <Link to="/chat" state={{ query: `How do I treat ${selectedGuide.crop} ${selectedGuide.disease}?`, crop: selectedGuide.crop, disease: selectedGuide.disease, confidence: 100 }}
-            className="h-12 inline-flex items-center gap-2 px-4 bg-green-500 text-white rounded-xl font-medium hover:bg-green-600 transition-all active:scale-[0.98]">
+            className="h-12 inline-flex items-center gap-2 px-4 bg-green-700 text-white rounded-xl font-medium hover:bg-green-600 transition-all active:scale-[0.98]">
             <MessageSquare size={18} /> Ask AI About This
           </Link>
         )}
