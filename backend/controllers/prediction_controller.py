@@ -6,7 +6,9 @@ from datetime import datetime
 
 from schemas import AddHistoryRequest
 
-from fastapi import APIRouter, Depends, File, UploadFile
+from fastapi import APIRouter, Depends, File, UploadFile, Request
+
+from controllers.auth_controller import limiter
 
 logger = logging.getLogger(__name__)
 from sqlalchemy.orm import Session
@@ -24,7 +26,9 @@ UPLOADS_DIR = Path(__file__).resolve().parents[1] / "storage" / "uploads"
 
 
 @router.post("/predict")
+@limiter.limit("10/minute")
 async def predict(
+    request: Request,
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user),

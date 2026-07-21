@@ -7,7 +7,7 @@ from ai.model_loader import ModelLoader
 from ai.predictor import PlantDiseasePredictor
 from ai.preprocess import ImagePreprocessor
 from utils.leaf_validator import LeafImageValidator
-from utils.validator import ImageValidator
+from utils.validator import ImageValidator, MAX_FILE_SIZE
 
 
 class PredictionService:
@@ -31,6 +31,8 @@ class PredictionService:
         self.validator.validate_upload(file)
         try:
             contents = await file.read()
+            if len(contents) > MAX_FILE_SIZE:
+                raise HTTPException(status_code=400, detail="File size must not exceed 10MB.")
             loop = asyncio.get_event_loop()
             return await loop.run_in_executor(None, self._sync_predict, contents)
         except HTTPException:

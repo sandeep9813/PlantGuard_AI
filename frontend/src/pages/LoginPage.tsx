@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, Leaf, Lock, Mail, User, LogIn } from 'lucide-react'
+import { Eye, EyeOff, Leaf, Lock, Mail, User, LogIn, Loader2 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../components/Toast'
 
@@ -14,12 +14,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   if (user) return <Navigate to="/" replace />
 
   const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault(); setError('')
+    event.preventDefault(); setError(''); setSubmitting(true)
     const result = await (mode === 'login' ? login(email, password) : signup(name, email, password))
+    setSubmitting(false)
     if (result.ok) {
       toast('success', mode === 'login' ? 'Welcome back!' : 'Account created successfully')
       navigate('/')
@@ -86,9 +88,10 @@ const LoginPage = () => {
 
           {error && <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm font-medium">{error}</div>}
 
-          <button type="submit"
-            className="w-full h-12 bg-green-700 text-white rounded-xl font-medium hover:bg-green-600 transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
-            <LogIn size={20} /> {mode === 'login' ? 'Login' : 'Create Account'}
+          <button type="submit" disabled={submitting}
+            className="w-full h-12 bg-green-700 text-white rounded-xl font-medium hover:bg-green-600 transition-all flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed">
+            {submitting ? <Loader2 size={20} className="animate-spin" /> : <LogIn size={20} />}
+            {submitting ? 'Please wait...' : mode === 'login' ? 'Login' : 'Create Account'}
           </button>
         </form>
       </div>

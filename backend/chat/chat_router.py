@@ -1,9 +1,10 @@
 import logging
 from typing import Optional
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
 
+from controllers.auth_controller import limiter
 from core.auth import get_current_user
 from core.database import get_db
 from database.models import User, ChatSession, ChatMessage
@@ -15,13 +16,15 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 
 
 @router.post("", response_model=ChatResponse)
+@limiter.limit("20/minute")
 async def chat(
-    request: ChatRequest,
+    request: Request,
+    chat_request: ChatRequest,
     session_id: Optional[int] = None,
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user),
 ):
-    result = await answer(request)
+    result = await answer(chat_request)
 
     user_id = current_user.id if current_user else None
     session: ChatSession | None = None
@@ -32,16 +35,16 @@ async def chat(
     if session is None:
         session = ChatSession(
             user_id=user_id,
-            crop=request.crop,
-            disease=request.disease,
+            crop=chat_request.crop,
+            disease=chat_request.disease,
         )
         db.add(session)
         db.commit()
         db.refresh(session)
 
-    db.add(ChatMessage(session_id=session.id, role="user", content=request.question))
+    db.add(ChatMessage(session_id=session.id, role="user", content=chat_request.question))
     db.add(ChatMessage(session_id=session.id, role="assistant", content=result.answer))
     db.commit()
-    
+
     result.session_id = session_id
     return result
