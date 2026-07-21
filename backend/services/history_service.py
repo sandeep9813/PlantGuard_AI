@@ -1,8 +1,9 @@
 import json
-from controllers.history_controller import AddHistoryRequest
+
 from sqlalchemy.orm import Session
 
 from database.models import Prediction
+from schemas import AddHistoryRequest
 
 
 class HistoryService:
@@ -26,14 +27,14 @@ class HistoryService:
     def add_history(self, item: AddHistoryRequest, user_id: int | None = None):
         record = Prediction(
             user_id=user_id,
-            image_path=item.get("image_path"),
-            prediction=item["prediction"],
-            confidence=item["confidence"],
-            is_uncertain=item.get("is_uncertain", False),
-            confidence_message=item.get("confidence_message"),
-            heatmap_path=item.get("heatmap"),
-            top_3=json.dumps(item.get("top_3", [])),
-            date=item.get("date"),
+            image_path=item.image_path,
+            prediction=item.prediction,
+            confidence=item.confidence,
+            is_uncertain=item.is_uncertain,
+            confidence_message=item.confidence_message,
+            heatmap_path=item.heatmap,
+            top_3=json.dumps(item.top_3 or []),
+            date=item.date,
         )
         self.db.add(record)
         self.db.commit()

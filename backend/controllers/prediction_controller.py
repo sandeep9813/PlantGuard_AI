@@ -1,10 +1,9 @@
 import base64
-from controllers.history_controller import AddHistoryRequest
-
-from datetime import datetime
 from pathlib import Path
 import uuid
 from datetime import datetime
+
+from schemas import AddHistoryRequest
 
 from fastapi import APIRouter, Depends, File, UploadFile
 from sqlalchemy.orm import Session

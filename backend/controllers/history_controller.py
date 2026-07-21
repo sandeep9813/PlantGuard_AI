@@ -5,15 +5,7 @@ from core.auth import get_current_user
 from core.database import get_db
 from database.models import User
 from services.history_service import HistoryService
-from pydantic import BaseModel
-class AddHistoryRequest(BaseModel):
-    prediction: str
-    confidence: float
-    is_uncertain: bool = False
-    confidence_message: str| None = None
-    top_3: list[dict] = []
-    date: str | None = None
-    image_path: str | None = None
+from schemas import AddHistoryRequest
 
 router = APIRouter(prefix="/history")
 
