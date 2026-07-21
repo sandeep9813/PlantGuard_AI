@@ -6,6 +6,6 @@ router = APIRouter()
 
 
 @router.get("/guides")
-async def get_guides():
+def get_guides():
     return chatbot_service.list_guides()
 

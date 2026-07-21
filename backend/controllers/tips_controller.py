@@ -16,12 +16,12 @@ def _load_tips():
 
 
 @router.get("")
-async def get_tips():
+def get_tips():
     return _load_tips()
 
 
 @router.get("/{tip_id}")
-async def get_tip(tip_id: int):
+def get_tip(tip_id: int):
     tips = _load_tips()
     for tip in tips:
         if tip["id"] == tip_id:
