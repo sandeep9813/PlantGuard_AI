@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { History as HistoryIcon, Trash2, Calendar, Activity, ChevronRight, ChevronLeft, Search, AlertTriangle } from 'lucide-react'
+import { History as HistoryIcon, Trash2, Calendar, Activity, ChevronRight, ChevronLeft, Search, AlertTriangle, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../components/Toast'
@@ -15,6 +15,7 @@ const HistoryPage = () => {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const fetchHistory = (p: number) => {
     setLoading(true)
@@ -36,7 +37,7 @@ const HistoryPage = () => {
   }, [])
 
   const clearHistory = async () => {
-    if (!window.confirm('Are you sure you want to clear all history?')) return
+    setShowConfirm(false)
     try {
       await api.clearHistory()
       toast('success', 'History cleared')
@@ -76,7 +77,7 @@ const HistoryPage = () => {
           <p className="text-slate-500">Review scans saved for {user?.name}.</p>
         </div>
         {history.length > 0 && (
-          <button onClick={clearHistory} className="flex items-center gap-2 h-12 px-4 bg-red-50 text-red-600 hover:bg-red-100 rounded-xl transition-all text-sm font-medium">
+          <button onClick={() => setShowConfirm(true)} className="flex items-center gap-2 h-12 px-4 bg-red-50 text-red-600 hover:bg-red-100 rounded-xl transition-all text-sm font-medium">
             <Trash2 size={16} /> Clear All
           </button>
         )}
@@ -156,6 +157,22 @@ const HistoryPage = () => {
             <p className="text-slate-500 max-w-xs mx-auto">Upload images in the Detection page to start building your history.</p>
           </div>
           <Link to="/detect" className="h-12 inline-flex items-center px-8 bg-green-500 text-white rounded-xl font-medium hover:bg-green-600 transition-all active:scale-[0.98]">Start Scanning</Link>
+        </div>
+      )}
+
+      {showConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowConfirm(false)}>
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-slate-900">Clear All History?</h3>
+              <button onClick={() => setShowConfirm(false)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
+            </div>
+            <p className="text-slate-500 mb-6">This will permanently delete all your saved scans. This action cannot be undone.</p>
+            <div className="flex gap-3">
+              <button onClick={() => setShowConfirm(false)} className="flex-1 h-11 bg-slate-100 text-slate-700 rounded-xl font-medium hover:bg-slate-200 transition-all">Cancel</button>
+              <button onClick={clearHistory} className="flex-1 h-11 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-all">Delete All</button>
+            </div>
+          </div>
         </div>
       )}
     </div>

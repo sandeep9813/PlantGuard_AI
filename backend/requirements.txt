@@ -10,4 +10,4 @@ python-dotenv
 scipy
 sqlalchemy
 bcrypt
-pyjwt
+PyJWT

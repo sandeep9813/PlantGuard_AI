@@ -1,4 +1,5 @@
 import base64
+import logging
 from pathlib import Path
 import uuid
 from datetime import datetime
@@ -6,6 +7,8 @@ from datetime import datetime
 from schemas import AddHistoryRequest
 
 from fastapi import APIRouter, Depends, File, UploadFile
+
+logger = logging.getLogger(__name__)
 from sqlalchemy.orm import Session
 
 from core.auth import get_current_user
@@ -43,8 +46,8 @@ async def predict(
         UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
         (UPLOADS_DIR / f"{item_id}.jpg").write_bytes(image_bytes)
         image_path = f"/uploads/{item_id}.jpg"
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warning("Failed to save uploaded image: %s", e)
 
     history_service = HistoryService(db)
     history_service.add_history(
