@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { Leaf, Lock, Mail, User, LogIn } from 'lucide-react'
+import { Eye, EyeOff, Leaf, Lock, Mail, User, LogIn } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../components/Toast'
 
@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
 
   if (user) return <Navigate to="/" replace />
@@ -74,8 +75,12 @@ const LoginPage = () => {
             <span className="text-sm font-medium text-slate-700">Password</span>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 h-12 bg-slate-100 border border-transparent rounded-xl focus:bg-white focus:border-green-500 outline-hidden text-sm" placeholder="Minimum 8 characters" />
+              <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)}
+                className="w-full pl-10 pr-12 h-12 bg-slate-100 border border-transparent rounded-xl focus:bg-white focus:border-green-500 outline-hidden text-sm" placeholder="Minimum 8 characters" />
+              <button type="button" onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
           </label>
 
