@@ -1,6 +1,7 @@
 import numpy as np
 from fastapi import HTTPException
-from scipy import ndimage  # Add this dependency if not already installed
+from PIL import Image
+from scipy import ndimage
 
 
 class LeafImageValidator:
@@ -54,6 +55,41 @@ class LeafImageValidator:
                 ),
             )
 
+    def build_plant_mask(self, image):
+        rgb = np.array(image.convert("RGB"), dtype=np.float32) / 255.0
+        red = rgb[:, :, 0]
+        green = rgb[:, :, 1]
+        blue = rgb[:, :, 2]
+
+        hsv = self._rgb_to_hsv(rgb)
+        hue = hsv[:, :, 0]
+        saturation = hsv[:, :, 1]
+        value = hsv[:, :, 2]
+
+        green_mask = (
+            (hue >= 0.14) & (hue <= 0.48) &
+            (saturation >= 0.22) & (value >= 0.15) &
+            (green >= red * 0.70) & (green > blue * 0.9)
+        )
+
+        yellow_brown_mask = (
+            (hue >= 0.06) & (hue < 0.20) &
+            (saturation >= 0.25) & (value >= 0.18)
+        )
+
+        white_gray_mask = (
+            (saturation < 0.15) & (value > 0.50) & (hue <= 0.15)
+        )
+
+        return green_mask | yellow_brown_mask | white_gray_mask
+
+    def clean_image(self, image):
+        rgb = np.array(image.convert("RGB"), dtype=np.uint8)
+        mask = self.build_plant_mask(image)
+        mask_3d = np.stack([mask] * 3, axis=-1)
+        cleaned = np.where(mask_3d, rgb, np.array([128, 128, 128], dtype=np.uint8))
+        return Image.fromarray(cleaned)
+
     def _image_stats(self, image):
         rgb = np.array(image.convert("RGB"), dtype=np.float32) / 255.0
         red = rgb[:, :, 0]
@@ -99,7 +135,7 @@ class LeafImageValidator:
             (np.mean(horizontal_edges > 0.085) + np.mean(vertical_edges > 0.085)) / 2
         )
 
-        # --- New: Largest connected green area ---
+        # Largest connected green area
         labeled_array, num_features = ndimage.label(green_mask)
         if num_features > 0:
             sizes = np.bincount(labeled_array.ravel())

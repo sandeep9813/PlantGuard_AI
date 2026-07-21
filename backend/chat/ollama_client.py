@@ -1,14 +1,9 @@
 import logging
 import os
-from pathlib import Path
 
 import httpx
-from dotenv import load_dotenv
 
 from .models import ChatMessage
-
-# Load .env from the backend root (one level up from this file)
-load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 logger = logging.getLogger(__name__)
 

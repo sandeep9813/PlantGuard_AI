@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 
 import bcrypt
 import jwt
-from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
@@ -11,8 +10,7 @@ from sqlalchemy.orm import Session
 from database.engine import SessionLocal
 from database.models import User
 
-load_dotenv()
-SECRET_KEY =    os.getenv("JWT_SECRET")
+SECRET_KEY = os.getenv("JWT_SECRET")
 if not SECRET_KEY:
     raise RuntimeError("JWT_SECRET environment variable is not set ")
 ALGORITHM = "HS256"

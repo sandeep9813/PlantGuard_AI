@@ -44,5 +44,6 @@ class PredictionService:
     def _sync_predict(self, contents: bytes):
         image = self.preprocessor.load_image(contents)
         self.leaf_validator.validate(image)
+        image = self.leaf_validator.clean_image(image)
         img_array = self.preprocessor.to_model_input(image)
         return self.predictor.predict(self.model_loader.model, image, img_array)
