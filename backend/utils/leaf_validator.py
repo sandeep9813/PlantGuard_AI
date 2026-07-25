@@ -13,6 +13,7 @@ class LeafImageValidator:
         min_largest_leaf_ratio: float = 0.08,
         min_edge_ratio: float = 0.010,
         min_saturation_mean: float = 0.10,
+        min_texture_variance: float = 0.25,
     ):
         self.min_green_ratio = min_green_ratio
         self.min_plant_ratio = min_plant_ratio
@@ -20,6 +21,7 @@ class LeafImageValidator:
         self.min_largest_leaf_ratio = min_largest_leaf_ratio
         self.min_edge_ratio = min_edge_ratio
         self.min_saturation_mean = min_saturation_mean
+        self.min_texture_variance = min_texture_variance
 
     def validate(self, image):
         stats = self._image_stats(image)
@@ -36,6 +38,7 @@ class LeafImageValidator:
             stats["edge_ratio"] < self.min_edge_ratio
             or stats["saturation_mean"] < self.min_saturation_mean
         )
+        is_low_texture = stats["texture_variance"] < self.min_texture_variance
 
         passed_checks = sum([
             has_green_leaf_signal,
@@ -43,9 +46,10 @@ class LeafImageValidator:
             has_single_dominant_leaf,
             not is_skin_dominated,
             not is_low_detail,
+            not is_low_texture,
         ])
 
-        if passed_checks < 5:
+        if passed_checks < 6:
             raise HTTPException(
                 status_code=422,
                 detail=(
@@ -135,6 +139,22 @@ class LeafImageValidator:
             (np.mean(horizontal_edges > 0.085) + np.mean(vertical_edges > 0.085)) / 2
         )
 
+        # Gradient magnitude map (for texture variance)
+        grad_mag = np.sqrt(
+            np.pad(horizontal_edges, ((0, 0), (0, 1))) ** 2
+            + np.pad(vertical_edges, ((0, 1), (0, 0))) ** 2
+        )
+
+        # Texture variance: coefficient of variation of gradient magnitude
+        # within the plant region. Real leaves have veins → high variation;
+        # flat surfaces like walls/fabric have uniform gradients → low variation.
+        plant_region = green_mask | yellow_brown_plant_mask | white_gray_plant_mask
+        plant_grad = grad_mag[plant_region]
+        if len(plant_grad) > 0 and np.mean(plant_grad) > 0:
+            texture_variance = float(np.std(plant_grad) / np.mean(plant_grad))
+        else:
+            texture_variance = 0.0
+
         # Largest connected green area
         labeled_array, num_features = ndimage.label(green_mask)
         if num_features > 0:
@@ -150,6 +170,7 @@ class LeafImageValidator:
             "skin_ratio": float(np.mean(skin_mask)),
             "saturation_mean": float(np.mean(saturation)),
             "edge_ratio": edge_ratio,
+            "texture_variance": texture_variance,
             "largest_leaf_ratio": float(largest_leaf_ratio),
         }
 
