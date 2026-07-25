@@ -45,7 +45,7 @@ class LeafImageValidator:
             not is_low_detail,
         ])
 
-        if passed_checks < 3:
+        if passed_checks < 5:
             raise HTTPException(
                 status_code=422,
                 detail=(
