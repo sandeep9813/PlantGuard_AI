@@ -40,12 +40,18 @@ def _fallback_answer(request: ChatRequest) -> ChatResponse:
 
     old_req = FallbackChatRequest(
         message=request.question,
+        crop=request.crop,
+        disease=request.disease,
         history=[{"role": m.role, "content": m.content} for m in request.chat_history],
     )
 
     try:
         result = fallback.answer(old_req)
-        return ChatResponse(answer=result["response"], sources=["knowledge_base"])
+        return ChatResponse(
+            answer=result.get("response", ""),
+            sources=["knowledge_base"],
+            suggestions=result.get("suggestions", []),
+        )
     except Exception as e:
         logger.exception("Fallback chatbot also failed")
         return ChatResponse(

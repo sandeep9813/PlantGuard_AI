@@ -105,6 +105,7 @@ export interface ChatContextResponse {
   answer: string 
   sources: string[]
   session_id?: number
+  suggestions?: string[]
 }
 
 class PlantGuardApiClient {

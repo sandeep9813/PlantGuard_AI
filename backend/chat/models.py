@@ -19,3 +19,4 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list[str]
     session_id: int | None = None
+    suggestions: list[str] = []

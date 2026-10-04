@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Send, Loader2, Sparkles, Youtube, ExternalLink, Paperclip, History, Trash2 } from 'lucide-react'
+import { Send, Loader2, Sparkles, Youtube, ExternalLink, Paperclip, History, Trash2, Lightbulb } from 'lucide-react'
 import { api } from '../services/api'
 import { motion } from 'framer-motion'
 import { useToast } from '../components/Toast'
@@ -9,6 +9,7 @@ interface ChatMessage {
   role: 'user' | 'assistant'
   content: string
   timestamp: Date
+  suggestions?: string[]
 }
 
 interface ChatContext {
@@ -78,14 +79,14 @@ const ChatPage = () => {
       setMessages(prev => [...prev, { role: 'user', content: query, timestamp: new Date() }])
       setLoading(true)
       try {
-        const response = await api.chatWithContext({
-          crop: newContext?.crop || '', disease: newContext?.disease || '',
-          confidence: newContext?.confidence || 0, question: query, chat_history: []
-        })
-        setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date() }])
-        if (response.session_id) setSessionId(response.session_id)
-      } catch {
-        setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running.", timestamp: new Date() }])
+      const response = await api.chatWithContext({
+        crop: newContext?.crop || '', disease: newContext?.disease || '',
+        confidence: newContext?.confidence || 0, question: query, chat_history: []
+      })
+      setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date(), suggestions: response.suggestions }])
+      if (response.session_id) setSessionId(response.session_id)
+    } catch {
+      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble connecting to my knowledge base. Please make sure the backend is running.", timestamp: new Date() }])
         toast('error', 'Chat unavailable — backend may be offline')
       } finally {
         setLoading(false)
@@ -109,7 +110,7 @@ const ChatPage = () => {
         crop: context?.crop || '', disease: context?.disease || '',
         confidence: context?.confidence || 0, question: userMessage, chat_history: history.slice(0, -1)
       }, sessionId ?? undefined)
-      setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date() }])
+      setMessages(prev => [...prev, { role: 'assistant', content: response.answer, timestamp: new Date(), suggestions: response.suggestions }])
       if (response.session_id) setSessionId(response.session_id)
       loadSessions()
     } catch {
@@ -142,6 +143,10 @@ const ChatPage = () => {
     } catch {
       toast('error', 'Failed to delete')
     }
+  }
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInput(suggestion)
   }
 
   const formatContent = (content: string) => {
@@ -261,6 +266,25 @@ const ChatPage = () => {
                   }`}>
                     {msg.role === 'user' ? msg.content : formatContent(msg.content)}
                   </div>
+                  {msg.role === 'assistant' && msg.suggestions && msg.suggestions.length > 0 && (
+                    <div className="mt-4 pt-3 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <Lightbulb size={14} className="text-amber-500" />
+                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Suggested</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {msg.suggestions.map((s, si) => (
+                          <button
+                            key={si}
+                            onClick={() => handleSuggestionClick(s)}
+                            className="text-xs px-3 py-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-full transition-all text-amber-700 font-medium active:scale-[0.97]"
+                          >
+                            {s}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <span className="text-xs font-medium text-slate-400 mt-1 ml-1">
                   {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
